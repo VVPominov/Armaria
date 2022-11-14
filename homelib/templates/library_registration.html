@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3 style="text-align: center">Добавление библиотеки</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- <table>
+            {{ lib_form.as_table}}
+        </table> -->
+        <table>
+            <tr>
+                <td><b>Название:</b></td>
+                <td>{{lib_form.library_name}}</td>
+            </tr>
+            <tr>
+                <td><b>Описание:</b></td>
+                <td>{{lib_form.library_description}}</td>
+            </tr>
+            <tr>
+                <td><b>Контакты:</b></td>
+                <td>{{lib_form.library_contacts}}</td>
+            </tr>
+            <tr>
+                <td><b>Город:</b></td>
+                <td>{{lib_form.library_city}}</td>
+            </tr>
+            <tr>
+                <td><b>Изображение:</b></td>
+                <td>{{lib_form.library_image}}</td>
+            </tr>
+        </table>
+        <div style="text-align: center">
+            <button type="submit">Добавить</button>
+            <button type="reset">Отмена</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

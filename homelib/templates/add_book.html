@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3 style="text-align: center">Добавление книги</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- <table>
+                {{ new_form.as_table}}
+            </table> -->
+        <table>
+            <tr>
+                <td><b>Название:</b></td>
+                <td>{{new_form.title}}</td>
+            </tr>
+            <tr>
+                <td><b>Имя автора:</b></td>
+                <td>{{new_form.first_name_author}}</td>
+            </tr>
+            <tr>
+                <td><b>Фамилия автора:</b></td>
+                <td>{{new_form.last_name_author}}</td>
+            </tr>
+            <tr>
+                <td><b>Жанр:</b></td>
+                <td>{{new_form.name_genre}}</td>
+            </tr>
+            <tr>
+                <td><b>Язык:</b></td>
+                <td>{{new_form.book_language}}</td>
+            </tr>
+            <tr>
+                <td><b>Изображение:</b></td>
+                <td>{{new_form.book_image}}</td>
+            </tr>
+        </table>
+        <div style="text-align: center">
+            <button type="submit">Добавить</button>
+            <button type="reset">Отмена</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

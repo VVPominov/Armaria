@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+  {% if form.errors %}
+  <div>Неверный пароль. Попробуйте еще раз.</div>
+  {% endif %}
+
+  {% if next %}
+  {% if user.is_authenticated %}
+  <div>Ваш аккаунт не имеет доступа к запрашиваемой странице. Для продолжения, войдите через аккаунт, имеющий доступ к запрашиваемой странице.</div>
+  {% else %}
+  <div>Пожалуйста, войдите для доступа к странице.</div>
+  {% endif %}
+  {% endif %}
+
+  <div>
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+
+      <table>
+        <tr>
+            <td>Логин:</td>
+            <td>{{form.username}}</td>
+        </tr>
+        <tr>
+            <td>Пароль:</td>
+            <td>{{form.password}}</td>
+        </tr>
+    </table>
+
+    <div style="text-align: center;">
+      <input type="submit" value="Войти" />
+      <input type="reset" value="Отмена" />
+      <input type="hidden" name="next" value="{{ next }}" />
+    </div>
+
+    </form>
+  </div>
+</div>
+  {% endblock %}

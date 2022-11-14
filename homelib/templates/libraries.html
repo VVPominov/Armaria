@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3 style="text-align: center">{{ title }}</h3>
+
+    {% for library in libraries %}
+    <p style="margin: 0px">
+        {{ library.number }}.
+        <a href="{% url 'library' library.id %}">{{ library.library_name }}.</a> Город: {{ library.library_city.city_name }}.
+    </p>
+    {% endfor %}
+</div>
+{% endblock %}

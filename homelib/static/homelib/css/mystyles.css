@@ -1,0 +1,40 @@
+#header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#content {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#left_column {
+    width: 20%;
+    background-color: white;
+}
+
+
+#center_column {
+    width: 60%;
+    color: white;
+    background-color: rgb(18 44 57);
+    border: 3px;
+    padding: 50px;
+    text-align: center;
+}
+
+#right_column {
+    width: 20%;
+    background-color: white;
+}
+
+#footer {
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3 style="text-align: center"><b>{{ book.title }}</b></h3>
+    <table>
+        <tr>
+            <td>
+                {% if book.book_image %}
+                <img style="width: 150px; margin-right: 50px;" src="{{ book.book_image.url }}" alt="no comments">
+                {% endif %}
+            </td>
+            <td valign="top">
+                <b>
+                    <div>Название:</div>
+                    <div>Автор:</div>
+                    <div>Жанр:</div>
+                    <div>Язык:</div>
+                    <div>Описание:</div>
+                </b>
+            </td>
+            <td valign="top">
+                <div>{{ book.title }}</div>
+                <div>{{ book.author }}</div>
+                <div>{{ book.genre }}</div>
+                <div>{{ book.language }}</div>
+                <div style="max-width: 500px;">{{ book.definition }}</div>
+            </td>
+        </tr>
+    </table>
+
+    <h5 style="margin-top: 50px;">Отзывы о книге</h5>
+    <hr>
+    {% for feedback in feedbacks %}
+    <div style="max-width: 700px;">{{feedback.book_feedback}}</div>
+    <p><i>{{feedback.reader}}. {{feedback.book_feedback_date_add}}</i></p>
+    <hr>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <form method="POST" enctype="multipart/form-data">
+            <div>
+                {% csrf_token %}
+                {{ new_feedback.book_feedback }}
+            </div>
+            <button type="submit">Добавить</button>
+            <button type="reset">Отмена</button>
+        </form>
+    {% endif %}
+
+</div>
+
+{% endblock %}

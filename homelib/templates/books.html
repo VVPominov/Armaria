@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3 style="text-align: center">
+        {{ title }}
+        {% if user.is_authenticated %}
+        <a href="{% url 'add_book' %}"><small><small><small>(добавить книгу)</small></small></small></a>
+        {% endif %}
+    </h3>
+
+    {% for book in books %}
+    <p style="margin: 0px">
+        {{ book.number }}.
+        <a href="{% url 'book' book.id %}">{{ book.title }}.</a>
+        {{ book.author }}. Жанр: {{ book.genre }}
+        ({{ book.language }}).
+    </p>
+    {% endfor %}
+</div>
+{% endblock %}
